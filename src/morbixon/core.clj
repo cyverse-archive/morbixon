@@ -50,7 +50,7 @@
 (defn -main
   [& args]
 
-  (let [[opts args help-str] (parse-args)]
+  (let [[opts args help-str] (parse-args args)]
     (cond
      (:help opts)
      (do (println help-str)
