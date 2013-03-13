@@ -10,7 +10,8 @@
         [ring.middleware.session]
         [ring.middleware.stacktrace]
         [slingshot.slingshot :only [try+ throw+]])
-  (:require [clojure.tools.cli :as cli]
+  (:require [morbixon.config :as cfg]
+            [clojure.tools.cli :as cli]
             [compojure.route :as route]
             [compojure.handler :as handler]
             [clojure.tools.logging :as log]
@@ -32,9 +33,9 @@
   [args]
   (cli/cli
    args
-   #_(["-c" "--config"
-       "Set the local config file to read from. Bypasses Zookeeper."
-       :default nil])
+   ["-c" "--config"
+    "Set the local config file to read from. Bypasses Zookeeper."
+    :default nil]
    ["-h" "--help"
     "Show the help."
     :default false
@@ -56,4 +57,8 @@
      (do (println help-str)
          (System/exit 0)))
 
-    (jetty/run-jetty app {:port (:port opts)})))
+    (if (:config opts)
+      (cfg/local-init (:config opts))
+      (cfg/zk-init))
+
+    (jetty/run-jetty app {:port (or (:port opts) (cfg/local-init))})))
