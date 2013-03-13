@@ -1,4 +1,5 @@
 (ns morbixon.core
+  (:gen-class)
   (:use [compojure.core]
         [clojure-commons.error-codes]
         [morbixon.json-body :only [parse-json-body]]
