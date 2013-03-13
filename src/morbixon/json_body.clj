@@ -33,7 +33,7 @@
       :else
       (try+
         (let [body-string (slurp (:body request))
-              body-map (json/parse-string body-string)
+              body-map (json/parse-string body-string true)
               new-req  (assoc request :body body-map)]
           (handler new-req))
         (catch error? err

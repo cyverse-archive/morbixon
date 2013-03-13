@@ -1,5 +1,6 @@
 (ns morbixon.core
   (:use [compojure.core]
+        [clojure-commons.error-codes]
         [morbixon.json-body :only [parse-json-body]]
         [clojure-commons.query-params :only [wrap-query-params]]
         [ring.middleware.params]
@@ -11,6 +12,7 @@
         [ring.middleware.stacktrace]
         [slingshot.slingshot :only [try+ throw+]])
   (:require [morbixon.config :as cfg]
+            [morbixon.controllers :as controllers]
             [clojure.tools.cli :as cli]
             [compojure.route :as route]
             [compojure.handler :as handler]
@@ -18,7 +20,8 @@
             [ring.adapter.jetty :as jetty]))
 
 (defroutes morbixon-routes
-  (GET "/" [] "Morbixon says hi."))
+  (GET "/" [] "Morbixon says hi.")
+  (POST "/" request (trap "provenance" controllers/do-provenance request)))
 
 (defn site-handler [routes]
   (-> routes

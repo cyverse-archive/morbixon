@@ -3,6 +3,7 @@
   :dependencies [[org.clojure/clojure "1.5.0"]
                  [org.clojure/tools.logging "0.2.6"]
                  [org.clojure/tools.cli "0.2.2"]
+                 [com.novemberain/validateur "1.4.0"]
                  [slingshot "0.10.3"]
                  [compojure "1.1.5"]
                  [ring/ring-jetty-adapter "1.1.8"]
