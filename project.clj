@@ -10,7 +10,7 @@
                  [ring/ring-devel "1.1.8"]
                  [cheshire "5.0.2"]
                  [com.cemerick/url "0.0.7"]
-                 [org.iplantc/clojure-commons "1.4.0-SNAPSHOT"]]
+                 [org.iplantc/clojure-commons "1.4.1-SNAPSHOT"]]
   :ring {:handler morbixon.core/app}
   :iplant-rpm {:summary "morbixon"
                :dependencies ["iplant-service-config >= 0.1.0-5"]
