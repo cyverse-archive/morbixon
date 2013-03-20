@@ -1,6 +1,6 @@
 (defproject morbixon "0.1.0-SNAPSHOT"
   :description "Logging service and provenance facade."
-  :dependencies [[org.clojure/clojure "1.5.0"]
+  :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/tools.logging "0.2.6"]
                  [org.clojure/tools.cli "0.2.2"]
                  [com.novemberain/validateur "1.4.0"]
@@ -19,6 +19,6 @@
   :aot [morbixon.core]
   :main morbixon.core
   :plugins [[lein-ring "0.8.3"]
-            [org.iplantc/lein-iplant-rpm "1.4.0-SNAPSHOT"]]
+            [org.iplantc/lein-iplant-rpm "1.4.1-SNAPSHOT"]]
   :repositories {"iplant"
                  "http://projects.iplantcollaborative.org/archiva/repository/internal/"})
